@@ -5,14 +5,12 @@
 
 #include "save_restore.h"
 
-static long state_save(unsigned int op, unsigned int flags,
-		       const char __user *uargs)
+static long state_save(unsigned int flags, const char __user *uargs)
 {
 	return -EINVAL;
 }
 
-static long state_restore(unsigned int op, unsigned int flags,
-		       const char __user *uargs)
+static long state_restore(unsigned int flags, const char __user *uargs)
 {
 	return -EINVAL;
 }
@@ -29,7 +27,7 @@ static long do_save_restore(unsigned int op, unsigned int flags,
 	case STATE_RESTORE:
 		if (flags != 0 || uargs != NULL)
 			return -EINVAL;
-		return state_save(flags, uargs);
+		return state_restore(flags, uargs);
 	default:
 		return -EINVAL;
 	}
